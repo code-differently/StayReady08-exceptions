@@ -9,8 +9,8 @@ public final class PhoneNumber {
     private final String phoneNumberString;
 
     // default constructor is uncallable
-    private PhoneNumber() throws InvalidPhoneNumberFormatException {
-        this(null);
+    protected PhoneNumber() throws InvalidPhoneNumberFormatException {
+           throw new InvalidPhoneNumberFormatException();
     }
 
     // non-default constructor is package-protected

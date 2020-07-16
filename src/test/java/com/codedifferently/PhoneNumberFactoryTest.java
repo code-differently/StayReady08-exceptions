@@ -4,11 +4,7 @@ import com.codedifferently.exceptions.InvalidPhoneNumberFormatException;
 import com.codedifferently.phone.PhoneNumber;
 import com.codedifferently.phone.PhoneNumberFactory;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
-
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * Created by leon on 5/9/17.
@@ -31,7 +27,21 @@ public class PhoneNumberFactoryTest {
         PhoneNumber phoneNumber = PhoneNumberFactory.createPhoneNumberSafely(areaCode, centralOfficeCode, phoneLineCode);
 
         // : Then
-        Assert.assertEquals(null, phoneNumber);
+        Assert.assertNull(phoneNumber);
+    }
+
+    @Test
+    public void testCreatePhoneNumberSafely2() {
+        // : Given
+        int areaCode = 202;
+        int centralOfficeCode = 891;
+        int phoneLineCode = 3825;
+
+        // : When
+        PhoneNumber phoneNumber = PhoneNumberFactory.createPhoneNumberSafely(areaCode, centralOfficeCode, phoneLineCode);
+
+        // : Then
+        Assert.assertEquals("(202)-891-3825", phoneNumber.toString());
     }
 
     @Test
@@ -85,7 +95,20 @@ public class PhoneNumberFactoryTest {
             PhoneNumber phoneNumber = PhoneNumberFactory.createRandomPhoneNumber();
 
             // : Then
-            Assert.assertTrue(phoneNumber != null);
+            Assert.assertNotNull(phoneNumber);
         }
+    }
+
+    @Test
+    public void testCreateRandomPhoneNumberArray() {
+            // : Given
+            int expected = 5;
+
+            // : When
+            PhoneNumber[] phoneNumbers = PhoneNumberFactory.createRandomPhoneNumberArray(expected);
+            int actual = phoneNumbers.length;
+
+            // : Then
+            Assert.assertEquals(expected, actual);
     }
 }

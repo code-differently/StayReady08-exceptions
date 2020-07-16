@@ -4,11 +4,7 @@ import com.codedifferently.exceptions.InvalidPhoneNumberFormatException;
 import com.codedifferently.phone.PhoneNumber;
 import com.codedifferently.phone.PhoneNumberFactory;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
-
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * Created by leon on 5/9/17.

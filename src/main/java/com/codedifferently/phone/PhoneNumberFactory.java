@@ -22,13 +22,15 @@ public final class PhoneNumberFactory {
      */ //TODO - Implement logic
     public static PhoneNumber[] createRandomPhoneNumberArray(int phoneNumberCount) {
 
-        PhoneNumber[] randomPhoneNumberArray = new PhoneNumber[phoneNumberCount];
+        PhoneNumber[] numbers = new PhoneNumber[phoneNumberCount];
 
-        for (int i = 0; i < randomPhoneNumberArray.length; i++){
-            randomPhoneNumberArray[i] = createRandomPhoneNumber();
+        for (int i = 0; i < numbers.length; i++){
+
+            numbers[i] = createRandomPhoneNumber();
+
         }
 
-        return randomPhoneNumberArray;
+        return numbers;
 
     }
 
@@ -53,12 +55,20 @@ public final class PhoneNumberFactory {
      * @return a new phone number object
      */ //TODO - if input is valid, return respective PhoneNumber object, else return null
     public static PhoneNumber createPhoneNumberSafely(int areaCode, int centralOfficeCode, int phoneLineCode) {
+
         String num = "(" + areaCode + ")-" + centralOfficeCode +"-" + phoneLineCode;
+
+        logger.info("Attempting to create a new PhoneNumber object with a value of " + num);
+
         try {
+
             return createPhoneNumber(num);
+
         } catch (InvalidPhoneNumberFormatException e) {
+
             logger.info(num + " is not a valid phone number");
             return null;
+
         }
     }
 
@@ -68,12 +78,18 @@ public final class PhoneNumberFactory {
      * @throws InvalidPhoneNumberFormatException - thrown if phoneNumberString does not match acceptable format
      */ // TODO - Add throws statement to method signature
     public static PhoneNumber createPhoneNumber(String phoneNumberString) throws InvalidPhoneNumberFormatException {
+
+        logger.info("Attempting to create a new PhoneNumber object with a value of " + phoneNumberString);
+
         try{
+
             return new PhoneNumber(phoneNumberString);
-        }
-        catch(InvalidPhoneNumberFormatException ipnfe){
-            logger.info("Attempting to create a new PhoneNumber object with a value of " + phoneNumberString);
+
+        } catch(InvalidPhoneNumberFormatException ipnfe){
+
+            logger.info(phoneNumberString + " is not a valid phone number");
             throw ipnfe;
+
         }
 
     }

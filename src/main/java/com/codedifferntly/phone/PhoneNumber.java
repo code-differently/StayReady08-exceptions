@@ -1,12 +1,13 @@
-package com.codedifferently.phone;
+package com.codedifferntly.phone;
 
-import com.codedifferently.exceptions.InvalidPhoneNumberFormatException;
+import com.codedifferntly.exceptions.InvalidPhoneNumberFormatException;
 
 /**
  * Created by leon on 5/10/17.
  */
 public final class PhoneNumber {
     private final String phoneNumberString;
+    public String NewPhone;
 
     // default constructor is uncallable
     private PhoneNumber() throws InvalidPhoneNumberFormatException {

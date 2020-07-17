@@ -1,4 +1,4 @@
-package com.codedifferently.exceptions;
+package com.codedifferntly.exceptions;
 
 /**
  * Created by leon on 5/10/17.

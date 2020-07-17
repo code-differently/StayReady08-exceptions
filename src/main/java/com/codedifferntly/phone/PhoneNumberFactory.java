@@ -20,7 +20,11 @@ public final class PhoneNumberFactory {
      * @return array of randomly generated PhoneNumber objects
      */ //TODO - Implement logic
     public static PhoneNumber[] createRandomPhoneNumberArray(int phoneNumberCount) {
-        return null;
+        PhoneNumber[] phoneNumbers = new PhoneNumber[phoneNumberCount];
+        for(int whichPhoneNumber = 0; whichPhoneNumber < phoneNumberCount; whichPhoneNumber++) {
+            phoneNumbers[whichPhoneNumber] = createRandomPhoneNumber();
+        }
+        return phoneNumbers;
     }
 
     /**
@@ -61,6 +65,7 @@ public final class PhoneNumberFactory {
             return createPhoneNumber(phoneNumber);
         }
         catch(InvalidPhoneNumberFormatException invalidPhoneNumber) {
+            Logger.getGlobal().info(phoneNumber + " is not a valid phone number");
             return null;
         }
     }
@@ -73,6 +78,7 @@ public final class PhoneNumberFactory {
     public static PhoneNumber createPhoneNumber(String phoneNumberString) throws InvalidPhoneNumberFormatException {
         PhoneNumber phoneNumber = null;
         try {
+            Logger.getGlobal().info("Attempting to create a new PhoneNumber object with a value of " + phoneNumberString);
            phoneNumber = new PhoneNumber(phoneNumberString);
        }
        catch (InvalidPhoneNumberFormatException invalidPhoneNumber){

@@ -1,4 +1,4 @@
-package com.codedifferently.tools;
+package com.codedifferntly.tools;
 import java.awt.*;
 import java.util.*;
 
@@ -16,6 +16,7 @@ public abstract class RandomNumberFactory {
 
     /** @return a random integer between the specified min and max numeric range */
     public static Integer createInteger(Integer min, Integer max) {
+
         return createFloat(min, max).intValue();
     }
 }

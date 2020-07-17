@@ -1,6 +1,6 @@
-package com.codedifferently.phone;
+package com.codedifferntly.phone;
 
-import com.codedifferently.exceptions.InvalidPhoneNumberFormatException;
+import com.codedifferntly.exceptions.InvalidPhoneNumberFormatException;
 
 /**
  * Created by leon on 5/10/17.

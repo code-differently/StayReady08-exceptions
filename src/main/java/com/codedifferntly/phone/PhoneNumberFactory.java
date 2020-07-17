@@ -3,7 +3,7 @@ package com.codedifferntly.phone;
 import com.codedifferently.exceptions.InvalidPhoneNumberFormatException;
 
 import java.util.logging.Logger;
-
+import java.util.Random;
 /**
  * Created by leon on 5/1/17.
  */
@@ -27,7 +27,25 @@ public final class PhoneNumberFactory {
      * @return an instance of PhoneNumber with randomly generated phone number value
      */ //TODO - Implement logic
     public static PhoneNumber createRandomPhoneNumber() {
-        return createPhoneNumberSafely(-1, -1, -1);
+        //will convert these string into integers
+        int area = putRandomNumbersIntoSlot(3);
+        int centralOfficeCode = putRandomNumbersIntoSlot(3);
+        int phoneLineCode = putRandomNumbersIntoSlot(4);
+
+        return createPhoneNumberSafely(area, centralOfficeCode, phoneLineCode);
+    }
+
+    private static int putRandomNumbersIntoSlot(int totalNumDigits) {
+        Random random = new Random();
+        String value = "";
+        int rangeOfValues = 9;
+        int offset = 1;
+
+        for(int whichDigit = 0; whichDigit < totalNumDigits; whichDigit++) {
+            value += random.nextInt(rangeOfValues) + offset;
+        }
+
+        return Integer.parseInt(value);
     }
 
 
@@ -38,7 +56,13 @@ public final class PhoneNumberFactory {
      * @return a new phone number object
      */ //TODO - if input is valid, return respective PhoneNumber object, else return null
     public static PhoneNumber createPhoneNumberSafely(int areaCode, int centralOfficeCode, int phoneLineCode) {
-        return createPhoneNumber(null);
+        String phoneNumber = "(" + areaCode + ")-" + centralOfficeCode + "-" + phoneLineCode;
+        try {
+            return createPhoneNumber(phoneNumber);
+        }
+        catch(InvalidPhoneNumberFormatException invalidPhoneNumber) {
+            return null;
+        }
     }
 
     /**
@@ -46,7 +70,14 @@ public final class PhoneNumberFactory {
      * @return a new phone number object
      * @throws InvalidPhoneNumberFormatException - thrown if phoneNumberString does not match acceptable format
      */ // TODO - Add throws statement to method signature
-    public static PhoneNumber createPhoneNumber(String phoneNumberString) {
-        return null;
+    public static PhoneNumber createPhoneNumber(String phoneNumberString) throws InvalidPhoneNumberFormatException {
+        PhoneNumber phoneNumber = null;
+        try {
+           phoneNumber = new PhoneNumber(phoneNumberString);
+       }
+       catch (InvalidPhoneNumberFormatException invalidPhoneNumber){
+           throw new InvalidPhoneNumberFormatException();
+        }
+        return phoneNumber;
     }
 }

@@ -1,8 +1,8 @@
 package com.codedifferently;
 
 import com.codedifferently.exceptions.InvalidPhoneNumberFormatException;
-import com.codedifferently.phone.PhoneNumber;
-import com.codedifferently.phone.PhoneNumberFactory;
+import com.codedifferntly.phone.PhoneNumber;
+import com.codedifferntly.phone.PhoneNumberFactory;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -87,5 +87,18 @@ public class PhoneNumberFactoryTest {
             // : Then
             Assert.assertTrue(phoneNumber != null);
         }
+    }
+
+    @Test
+    public void testCreateRandomPhoneNumberArray() {
+        // : Given
+        int expectedNumPhones = 5;
+
+        // : When
+        PhoneNumber[] phoneNumber = PhoneNumberFactory.createRandomPhoneNumberArray(5);
+        int actualNumPhones = phoneNumber.length;
+
+        // : Then
+        Assert.assertEquals(expectedNumPhones, actualNumPhones);
     }
 }

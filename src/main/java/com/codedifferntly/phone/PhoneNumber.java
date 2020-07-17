@@ -1,6 +1,7 @@
-package com.codedifferently.phone;
+package com.codedifferntly.phone;
 
-import com.codedifferently.exceptions.InvalidPhoneNumberFormatException;
+
+import com.codedifferntly.exceptions.InvalidPhoneNumberFormatException;
 
 /**
  * Created by leon on 5/10/17.
@@ -16,10 +17,13 @@ public final class PhoneNumber {
     // non-default constructor is package-protected
     protected PhoneNumber(String phoneNumber) throws InvalidPhoneNumberFormatException {
         //validate phone number with format `(###)-###-####`
-        if (!phoneNumber.matches("\\(\\d{3}\\)-\\d{3}-\\d{4}")) {
+        if (phoneNumber.matches("\\(\\d{3}\\)-\\d{3}-\\d{4}")) {
+            this.phoneNumberString = phoneNumber;
+        }
+        else
+        {
             throw new InvalidPhoneNumberFormatException();
         }
-        this.phoneNumberString = phoneNumber;
     }
 
     public String getAreaCode() {
@@ -38,4 +42,5 @@ public final class PhoneNumber {
     public String toString() {
         return phoneNumberString;
     }
+
 }

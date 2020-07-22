@@ -23,9 +23,9 @@ public class PhoneNumberFactoryTest {
     @Test
     public void testCreatePhoneNumberSafely() {
         // : Given
-        int areaCode = 0;
-        int centralOfficeCode = 0;
-        int phoneLineCode = 0;
+        int areaCode = 704;
+        int centralOfficeCode = 000;
+        int phoneLineCode = 2222;
 
         // : When
         PhoneNumber phoneNumber = PhoneNumberFactory.createPhoneNumberSafely(areaCode, centralOfficeCode, phoneLineCode);

@@ -9,10 +9,6 @@ import org.junit.Test;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-/**
- * Created by leon on 5/9/17.
- */
 public class PhoneNumberFactoryTest {
 
     @Test(expected = InvalidPhoneNumberFormatException.class)

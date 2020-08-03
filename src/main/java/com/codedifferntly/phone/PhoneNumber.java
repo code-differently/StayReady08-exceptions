@@ -1,4 +1,4 @@
-package com.codedifferently.phone;
+package com.codedifferntly.phone;
 
 import com.codedifferently.exceptions.InvalidPhoneNumberFormatException;
 

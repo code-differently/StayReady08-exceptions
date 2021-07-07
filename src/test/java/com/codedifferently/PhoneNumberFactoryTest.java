@@ -18,6 +18,7 @@ public class PhoneNumberFactoryTest {
     @Test(expected = InvalidPhoneNumberFormatException.class)
     public void testInvalidPhoneNumberFormatException() throws InvalidPhoneNumberFormatException {
         PhoneNumberFactory.createPhoneNumber("-1");
+
     }
 
     @Test
